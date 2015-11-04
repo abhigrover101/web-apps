@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>U Tunes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    {{response.files.append(URL(request.application,'static','style.css'))}}
+    {{include 'web2py_ajax.html'}}  
+</head>
+<body>
+
+<div style="font-family:bleeding cowboys;font-size:75px;text-align:center">Dance Club</div>
+<div id="container">
+{{if auth.user:}}    
+    <div style="font-family:bleeding cowboys;text-align:left">{{=A('HOME PAGE',_href=URL(r=request,f='index'))}}</div>
+{{pass}}   
+ <div id="menu" style="font-family:aliciawonderland;font-size:15px">
+        <ul style="font-family:aliciawonderland;font-size:15px">
+
+            <!--<li id="m03"><a href="{{=URL(r=request,f='upload_box')}}"><font size=0>Upload Song</font></a></li>
+           f <li id="m04"><a href="{{=URL(r=request,f='list_songs')}}"><font size=0>List Songs</a></li></font>
+        -->
+    {{ if 'auth' in globals():}}
+    {{if not auth.user:}} 
+    <li id="m01"><a href="{{=URL(r=request,f='user/login')}}"style="font-family:aliciawonderland;font-size:13px; color:#ECD872">>Login</font></a></li>
+    <li id="m02"><a href="{{=URL(r=request,f='user/register')}}"style="font-family:aliciawonderland;font-size:13px; color:#ECD872">>Register</font></a></li>
+   <li id="m03"><a href="{{=URL(r=request,f='contact_us')}}"style="font-family:aliciawonderland;font-size:13px; color:#ECD872">Contact Us</font></a></li>
+   <!-- <li id="m03"><a href="{{=URL(r=request,f='')}}"<font size=0 color=orange>Register</font></a></li>
+    <li id="m04"><a href="<font size=0 color=orange>Register</font></a></li>
+    <li id="m05"><a href="http://www.facebook.com/"<font size=0 color=orange>Contact Us</font></a></li>
+    -->{{else:}}
+   <li id="m01"><a href="{{=URL(r=request,f='user/logout')}}" style="font-family:aliciawonderland;font-size:13px; color:#ECD872">Logout</a></li>
+    <!--<li id="m02"><a href="{{=URL(r=request,f='user/profile')}}"<font size=0>Profile</font></a></li>
+   <li id="m03"><a href="{{=URL(r=request,f='user/change_password')}}"<font size=0>Change_Password</font></a></li> 
+   --><li id="m02"><a href="{{=URL(r=request,f='upload_box')}}"style="font-family:aliciawonderland;font-size:13px; color:#ECD872">Events</font></a></li>
+   <li id="m03"><a href="{{=URL(r=request,f='search_box')}}"style="font-family:aliciawonderland;font-size:13px; color:#ECD872">Workshops</font></a></li>
+   <li id="m04"><a href="{{=URL(r=request,f='list_songs')}}"style="font-family:aliciawonderland;font-size:13px; color:#ECD872">Photo Gallery</font></a></li>
+   <li id="m05"><a href="{{=URL(r=request,f='contact_us')}}"style="font-family:aliciawonderland;font-size:13px; color:#ECD872">Contact Us</font></a></li>
+    {{pass}}
+    {{pass}}
+        </ul>
+    </div>
+    <div id="header"><br/>
+    <!--><div style="font-size:20px;font-family:polo; text-align:center ;color:#F88017">Recently Uploaded Songs:</div >
+    <div align="center" class="content2" id="myslides">
+
+<div id="mygallery" class="stepcarousel">
+<div class="belt" style="width: 1764px; left: 0px;">
+<div class="panel" style="float: none; position: absolute; left: 0px;">
+<a title="Ip.Man.The.Legend.Is.Born.2010.DVDRip.XviD-ViSiON" href="http://oneclickmoviez.com/?s=ip.man+legend"><img height="148" width="100" src="http://i34.tinypic.com/2wmny44.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 126px;">
+<a title="Why.Did.I.Get.Married.Too.2010.BDRip.XviD-FRAGMENT" href="http://oneclickmoviez.com/?s=Why.Did.I.Get.Married.Too"><img height="148" width="100" src="http://i35.tinypic.com/fwp1mo.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 252px;">
+<a title="The.Twilight.Saga.Eclipse.2010.DVDSCR.XviD-PrisM" href="http://oneclickmoviez.com/?s=eclipse+dvdscr"><img height="148" width="100" src="http://i38.tinypic.com/2ho9t3t.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 378px;">
+<a title="Salt.2010.R5.LiNE.XviD-LAP" href="http://oneclickmoviez.com/?s=salt+2010"><img height="148" width="100" src="http://i34.tinypic.com/47x0.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 504px;">
+<a title="Prince.Of.Persia.2010.R4.DVDRip.XviD.AC3-ViSiON" href="http://oneclickmoviez.com/?s=prince.of.persia"><img height="148" width="100" src="http://i33.tinypic.com/1688zd1.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 630px;">
+<a title="Killers.2010.iNTERNAL.DVDRip.XviD-OSHT" href="http://oneclickmoviez.com/?s=killers+2010"><img height="148" width="100" src="http://i38.tinypic.com/20sukvl.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 756px;">
+<a title="Ong.Bak.3.2010.DVDRip.XviD.AC3-ViSiON" href="http://oneclickmoviez.com/?s=ong.bak.3"><img height="148" width="100" src="http://i37.tinypic.com/wcl1yf.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 882px;">
+<a title="Marmaduke.2010.Bluray.720p.DTS.x264-CHD" href="http://oneclickmoviez.com/?s=marmaduke"><img height="148" width="100" src="http://i33.tinypic.com/21e2blj.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 1008px;">
+<a title="Furry.Vengeance.2010.BDRip.XviD-Larceny" href="http://oneclickmoviez.com/?s=Furry+Vengeance"><img height="148" width="100" src="http://i35.tinypic.com/19av5c.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 1134px;">
+<a title="Sex.And.The.City.2.2010.READNFO.V2.DVDRip.XviD.AC3-KiNGDOM" href="http://oneclickmoviez.com/?s=Sex.And.The.City.2"><img height="148" width="100" src="http://i29.tinypic.com/2vw615w.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 1260px;">
+<a title="Toy.Story.3.2010.DVDScr.2D.XviD-MAGNET" href="http://oneclickmoviez.com/?s=toy.story.3"><img height="148" width="100" src="http://i29.tinypic.com/2mwwnd1.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 1386px;">
+<a title="Diary.Of.A.Wimpy.Kid.DVDRip.XviD-ARROW" href="http://oneclickmoviez.com/?s=wimpy.kid"><img height="148" width="100" src="http://i30.tinypic.com/2ezhiqh.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 1512px;">
+<a title="Kick-Ass.DVDRip.RERIP.XviD-NeDiVx" href="http://oneclickmoviez.com/?s=kick+ass"><img height="148" width="100" src="http://i28.tinypic.com/2z553lc.jpg" alt="#">
+</a>
+</div>
+<div class="panel" style="float: none; position: absolute; left: 1638px;">
+<a title="Splice.2010.R5.Xvid.V2.READNFO-LKRG" href="http://oneclickmoviez.com/?s=splice"><img height="148" width="100" src="http://i30.tinypic.com/2vb1k5e.jpg" alt="#">
+</a>
+</div>
+</div>
+</div>
+</div><br/><-->
+        <div id="dj"></div>
+        <div id="welcome">
+        {{include}}
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div id="middle"></div>
+    <div id="middle2"></div>
+    <div id="content">
+        <!--<div id="left">
+            
+            
+            <p>This is just a place holder so you can see how the site would look like.</p>
+            <p>The template is designed by <a href="http://www.freewebsitetemplates.com">free website templates</a> for you for free you can replace all the text by your own text.</p>
+            <p>Even more websites all about website templates on <a href="http://www.justwebtemplates.com">Just Web Templates</a>.</p>
+            <p>If you're looking for beautiful and professionally made templates you can find them at <a href="http://www.templatebeauty.com">Template Beauty</a>.</p>
+        </div>-->
+        <div id="right">
+         
+       <!--<form onsubmit="return IBN_mkt_validate();" target="_blank" action="http://www.moneycontrol.com/stocks/cptmarket/compsearchnew.php" method="post" id="stock_search_top" name="stock_search_top"><input type="hidden" value="price" name="fname"><input type="text" onfocus="this.value=''" class="txtinput1" size="30" value="Get Stock Quote" id="companyname" name="companyname"></form>
+     
+           <input type="image" border="0" src="http://img1.moneycontrol.com/images/mc2008/markets/goBut.gif">
+           <img src="http://img1.moneycontrol.com/images/stocktracker/red_arrow.gif">
+           <input style="background: none repeat scroll 0% 0% rgb(255, 255, 255); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204); color: rgb(0, 0, 0); font: 18px arial,sans-serif bold; height: 25px; margin: 0pt; padding: 5px 8px 0pt 6px; vertical-align: top;" size="57" value="" title="Google Search" class="lst" name="q" maxlength="2048" onblur="google&amp;&amp;google.fade&amp;&amp;google.fade()" autocomplete="off"> 
+           <input type="submit" onclick="this.checked=1" class="lsb" value="Google Search" name="btnG">
+           --><!--      <h2>Photos</h2>
+            <a href="http://www.freewebsitetemplates.com"><img src="images/photo.jpg" alt="photo 1" /></a>
+            <a href="http://www.freewebsitetemplates.com"><img src="images/photo.jpg" alt="photo 2" /></a>
+            <a href="http://www.freewebsitetemplates.com"><img src="images/photo.jpg" alt="photo 3" /></a>
+            <a href="http://www.freewebsitetemplates.com"><img src="images/photo.jpg" alt="photo 4" /></a>
+            <br /><br />  
+            -->
+           <!-- <a class="more" href="http://www.freewebsitetemplates.com">more photos</a>
+        --></div>
+        <div class="clear">
+        </div>
+    </div>
+    
+    <div id="footer">
+        <p>Copyright � @abhi & piyush<p>
+        
+    </div>
+
+</div>
+</body>
+</html>

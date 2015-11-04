@@ -1,0 +1,135 @@
+timestamp: 2010-08-10T00:52:08.069989
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512)
+);
+success!
+timestamp: 2010-08-10T00:52:08.093960
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-08-10T00:52:08.098673
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-08-10T00:52:08.106825
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2010-08-10T00:52:08.112387
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-08-15T17:53:47.930571
+CREATE TABLE user_profile(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-08-15T17:53:47.986734
+CREATE TABLE songs_database(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    song_name CHAR(512),
+    upload_song CHAR(512),
+    upload_song_cover CHAR(512),
+    album_name CHAR(512),
+    artist CHAR(512),
+    Genre CHAR(512),
+    language CHAR(512),
+    uploaded_by CHAR(512),
+    year INTEGER
+);
+success!
+timestamp: 2010-08-15T17:53:47.992736
+CREATE TABLE comments(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    song_name CHAR(512),
+    comment TEXT
+);
+success!
+timestamp: 2010-08-15T17:53:47.999625
+CREATE TABLE like(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    song_name CHAR(512)
+);
+success!
+timestamp: 2010-08-15T17:53:48.008627
+CREATE TABLE notifications(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    value TEXT
+);
+success!
+timestamp: 2010-08-15T18:01:03.779464
+ALTER TABLE comments ADD time DATE;
+timestamp: 2010-08-18T20:43:31.164151
+ALTER TABLE songs_database ADD no_down INTEGER;
+timestamp: 2010-08-18T20:43:31.194972
+CREATE TABLE new_playlist(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name REFERENCES auth_user(id) ON DELETE CASCADE,
+    playlist_name CHAR(512)
+);
+success!
+timestamp: 2010-08-18T20:43:31.200562
+CREATE TABLE playlist(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    playlist_id REFERENCES new_playlist(id) ON DELETE CASCADE,
+    song_name REFERENCES songs_database(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-08-18T20:45:26.821824
+ALTER TABLE like ADD user_id CHAR(512);
+timestamp: 2010-08-18T20:45:26.828530
+ALTER TABLE notifications ADD user_id REFERENCES auth_user(id) ON DELETE CASCADE;
+timestamp: 2010-08-18T20:45:26.835622
+ALTER TABLE new_playlist ADD user_id REFERENCES auth_user(id) ON DELETE CASCADE;
+timestamp: 2010-08-21T09:25:26.033636
+ALTER TABLE comments ADD song_id INTEGER;
+timestamp: 2010-08-21T12:24:32.954108
+CREATE TABLE plugin_rating_master(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tablename CHAR(512),
+    record_id INTEGER,
+    rating DOUBLE,
+    counter INTEGER
+);
+success!
+timestamp: 2010-08-21T12:24:32.970137
+CREATE TABLE plugin_rating_aux(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    master REFERENCES plugin_rating_master(id) ON DELETE CASCADE,
+    rating DOUBLE,
+    created_by REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-08-29T21:37:05.731583
+ALTER TABLE notifications ADD song_id INTEGER;
+timestamp: 2010-08-29T23:46:49.391897
+ALTER TABLE like ADD song_id INTEGER;
+timestamp: 2010-08-30T00:44:12.682361
+ALTER TABLE playlist ADD song_id INTEGER;

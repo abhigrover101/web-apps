@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+{{for i in range(0,15):}}
+    <li>{{=A(s[i+u*15].user_name "says" s[i+15*u].comment "on" s[u*15+i].time, _href=URL(r=request,f='view_song',args=songs[k+u*9].id))}}</li>
+    {{if ((i+u*15+1)>=len(s)):}}
+                 {{i=-1}}
+                 {{break}}
+    {{pass}}
+    {{=A(songs[k+u*9].song_name,_href=URL(r=request,f='view_song',args=songs[k+u*9].id))}
+{{pass}}
+{{if i!=-1:}}
+    {{=A("more-->",_href=URL(r=request,f='all',args=[p,u+1]))}}
+{{else if (len(s)>15):}}
+    {{=A("<--back",_href=URL(r=request,f='all',args=[p,u-1]))}}
+{{pass}}

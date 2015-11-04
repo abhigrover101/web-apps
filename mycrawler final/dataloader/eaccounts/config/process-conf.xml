@@ -1,0 +1,41 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="eaccounts" class="com.salesforce.dataloader.process.ProcessRunner" singleton="false">
+		<description>Created by Dataloader Cliq.</description>
+		<property name="name" value="eaccounts"/>
+		<property name="configOverrideMap">
+			<map>
+				<entry key="dataAccess.name" value="/var/www/web2py/applications/mycrawler/dataloader/allaccount.csv"/>
+				<entry key="dataAccess.readUTF8" value="true"/>
+				<entry key="dataAccess.type" value="csvWrite"/>
+				<entry key="dataAccess.writeUTF8" value="true"/>
+				<entry key="process.enableExtractStatusOutput" value="false"/>
+				<entry key="process.enableLastRunOutput" value="false"/>
+				<entry key="process.operation" value="extract_all"/>
+				<entry key="sfdc.bulkApiCheckStatusInterval" value="5000"/>
+				<entry key="sfdc.bulkApiSerialMode" value="5000"/>
+				<entry key="sfdc.debugMessages" value="false"/>
+				<entry key="sfdc.enableRetries" value="true"/>
+				<entry key="sfdc.endpoint" value="https://www.salesforce.com/services/Soap/u/25.0"/>
+				<entry key="sfdc.entity" value="Account"/>
+				<entry key="sfdc.extractionRequestSize" value="500"/>
+				<entry key="sfdc.extractionSOQL" value="Select ID,MASTERRECORDID,NAME,TYPE,PARENTID,BILLINGCITY,BILLINGSTATE,BILLINGCOUNTRY,WEBSITE,INDUSTRY,ANNUALREVENUE,OWNERID,CREATEDDATE,CREATEDBYID,STAGE__C,MARKETINGTIER__C,SUB_INDUSTRY__C,TARGET_ACCOUNT__C,MODEL_N_CUSTOMER__C,MARKETING_TARGET__C from Account
+"/>
+				<entry key="sfdc.insertNulls" value="false"/>
+				<entry key="sfdc.loadBatchSize" value="100"/>
+				<entry key="sfdc.maxRetries" value="3"/>
+				<entry key="sfdc.minRetrySleepSecs" value="2"/>
+				<entry key="sfdc.noCompression" value="false"/>
+				<entry key="sfdc.password" value="77dafd5bf54cbac2eb16b4fa616b7b8791bb6c61141fab188efe1e5646dc5fa8c2d1666822d71c9f"/>
+				<entry key="sfdc.proxyHost" value=""/>
+				<entry key="sfdc.proxyNtlmDomain" value=""/>
+				<entry key="sfdc.proxyPassword" value=""/>
+				<entry key="sfdc.proxyPort" value=""/>
+				<entry key="sfdc.proxyUsername" value=""/>
+				<entry key="sfdc.timeoutSecs" value="60"/>
+				<entry key="sfdc.useBulkApi" value="false"/>
+				<entry key="sfdc.username" value="mgaurav@modeln.com"/>
+			</map>
+		</property>
+	</bean>
+</beans>

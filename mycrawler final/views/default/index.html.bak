@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+<style type="text/css">
+
+body
+{
+background-image:url('/mycrawler/static/background.jpg');
+}
+</style>
+</head>
+
+<body>
+<br /><br /><br /><br /><br /><br />
+<div style="font-size:50px; color:#1569C7;position:relative;text-align:center">Login To LinkedIn Crawler</div><br/><br />
+<!--<div style="font-size:18px;" align="center"> {{=BEAUTIFY(form)}}</div>-->
+<div style="text-align:center">
+{{=form.custom.begin}}
+<b>LinkedIn User Id <div style="font-size:18px"> {{=form.custom.widget.LinkedIn_User_Id}}</div>
+Password <div style="font-size:18px"> {{=form.custom.widget.Password}}</div></b>
+{{=form.custom.submit}}
+{{=form.custom.end}}
+</div>
+</body>
+</html>

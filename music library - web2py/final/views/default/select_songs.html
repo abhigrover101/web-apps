@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<div style="font-size:50px;color:#F88017;font-family:poke;position:absolute">Select Songs</div><br/><br/>
+<div style="font-size:25px;color:#ECD872; font-family:waltograph">Songs:</div>
+
+{{for song in songs:}}
+<div style="font-size:25px;color:#ECD872;font-family:waltograph;position:absolute">
+{{=A(song.song_name,_href=URL(r=request,f='view_song',args=song.id))}}</div>
+<div style="font-size:30px;color:#ECD872; font-family:waltograph;text-align:right">         
+{{=A('Add to playlist',_href=URL(r=request,f='add',args=[i,song.song_name]))}}</div>
+{{pass}}

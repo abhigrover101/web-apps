@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+{{for i in l:}}
+     <li> {{=A(i.playlist_name,_href=URL(r=request,f='playlist',args=i.id))}}</li>
+             {{=A(">>add songs", _href=URL(r=request,f='select_songs',args=i.id))}}
+             <br/>{{=A("delete",_href=URL(r=request,f='del_play',args=i.id))}}
+{{pass}}

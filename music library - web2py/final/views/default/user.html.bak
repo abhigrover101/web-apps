@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+<div id="header1" style="font-family:bleeding cowboys;font-size:50px;text-align:center">Welcome</div>
+<div id="header2" style="font-family:aladdin;font-size:22px;font-weight:bold;color:#F88017">Welcome to the world of U Tunes. U Tunes is basically an online music library where you can upload as well as download songs. It provides many other features such as maintaining your own playlists,play songs online,comment on songs,etc. And all of this at zero cost. You just need to register first which wont take more than a minute. Then u can surf on the waves of music only with U Tunes</div>
+<div id="header2" style="font-family:waltograph;font-size:20px;text-align:center">"Without music life would be a mistake"</div><br/><br/>
+<div style="color:#F88017;font-family:antfarm gonecamping;font-size:30px">{{=T( request.args(0).replace('_',' ').capitalize() )}}</div>
+<div style="color:#ECD872;font-family:angie pierced;font-size:18px">{{=form}}</div>
+{{if request.args(0)=='login':}}
+<div style="color:#ECD872;font-family:angie pierced;font-size:18px"><a href="{{=URL(r=request,args='register')}}">register</a></div>
+<div style="color:#ECD872;font-family:angie pierced;font-size:18px">
+<a href="{{=URL(r=request,args='request_reset_password')}}">lost password</a></div>
+{{pass}}

@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+{{if (len(p)==0):}}
+     No new notification :(       
+{{else:}}
+    {{for i in p:}}
+    <ul>
+     <li>{{=A(i.value,_href=URL(r=request,f='view_song',args=i.song_id}}</li>
+       <li>{{=A("Delete",_href=URL(r=request,f='del_notification',args=i.id))}}</li>                 
+    {{pass}}
+{{pass}}

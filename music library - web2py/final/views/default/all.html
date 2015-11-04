@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+{{if ((u*15+1)>=len(s)):}}
+                 {{i=-1}}                   
+{{else:}}  
+  {{for i in range(0,15):}}
+     <li>
+     {{=s[i+u*15].user_name}} says "{{=s[i+15*u].comment}}" on {{=s[u*15+i].time}}</li>
+     {{if ((i+u*15+1)>=len(s)):}}
+                 {{i=-1}}
+                 {{break}}
+     {{pass}}
+  {{pass}}
+{{pass}}
+
+{{if i!=-1:}}
+    {{=A("more-->",_href=URL(r=request,f='all',args=[p,u+1]))}}
+{{elif (len(s)>15):}}
+    {{=A("<--back",_href=URL(r=request,f='all',args=[p,u-1]))}}
+{{pass}}

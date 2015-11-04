@@ -1,0 +1,40 @@
+<script src="{{=URL('static','js/modernizr.custom.js')}}"></script>  
+
+  <!-- include stylesheets -->
+  {{
+  #response.files.append(URL('static','css/skeleton.css'))
+  response.files.append(URL('static','css/web2py.css'))
+  #if response.menu:
+  #   response.files.append(URL('static','css/superfish.css'))
+  #   response.files.append(URL('static','js/superfish.js'))
+  #pass
+  }}
+
+  {{include 'web2py_ajax.html'}}
+<div class="flash">{{=response.flash or ''}}</div>
+<br />
+<div style="font-size:18px; color:#1569C7;" align="right"> 
+{{=A("Back To Search",_href=URL(r=request,f='enter_info'))}}
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+
+body
+{
+background-image:url('/mycrawler/static/background.jpg');
+}
+</style>
+</head>
+
+<div style="font-size:50px; color:#1569C7;position:relative;text-align:center">Check Data With Salesforce</div><br/>
+<div style="font-size:18px;" align="center">Step 1* : Update Accounts File on Server</div><br />
+<div style="font-size:18px;" align="center">Step 2* : Update Contacts File on Server</div><br />
+<div style="font-size:18px;" align="center">{{=A("Step 3* : Appending Field \"COMPANYNAME\" in Contacts File on Server",_href=URL(r=request,f='contactsonserver'))</div><br />
+<div style="font-size:18px;" align="center">Step 4 : Upload File To be changed</div><br />
+<div style="font-size:18px;" align="center"> {{=BEAUTIFY(form)}}</div>
+<div style="font-size:18px;" align="center">*Not mandatory...Update when the accounts and contacts have changed<br /> You can update contacts and accounts on server by running the following commands on the server:<br />Command for Accounts: /var/www/web2py/applications/mycrawler/dataloader/eaccounts/./eaccounts.sh<br />Command for Contacts: /var/www/web2py/applications/mycrawler/dataloader/econtacts/./econtacts.sh<br /></div><br />
+<div style="font-size:18px;" align="center">Input file must have following headers and in upper case(order doesnt matter):</div><br />
+<div style="font-size:18px;" align="center">1.LASTNAME &nbsp   2.FIRSTNAME &nbsp   3.EMAIL &nbsp 4.COMPANYNAME &nbsp 5.TITLE</div>
+{{pass}}

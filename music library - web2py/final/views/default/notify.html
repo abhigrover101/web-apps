@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<div id="header1" style="font-family:poke;font-size:55px;text-align:center;color: #F88017;text-align:center">Notifications</div><br/>
+<div id="header1" style="font-size:22px;color:#ECD872; font-family:waltograph;text-align:left">
+<ul>
+{{if (len(p)==0):}}
+     No new notification :(
+{{else:}}
+ {{for i in p:}}
+ <li>{{=A(i.value,_href=URL(r=request,f='view_song',args=i.song_id))}}</li>
+ <div style="font-size:22px;color:#ECD872; font-family:waltograph;text-align:right">{{=A("Delete",_href=URL(r=request,f='del_notification',args=i.id))}}</div><br/>          
+ {{pass}} 
+{{pass}}
+</ul>
+</div>

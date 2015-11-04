@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+<div style="font-size:55px;font-family:poke;color: #F88017;position:absolute">Upload Song</div><br/><br/><br/>
+<center><div style="font-size:22px;color:#ECD872; font-family:waltograph;position:absolute"> <!-->{{=BEAUTIFY(response._vars)}}<-->{{=upload}}</div></center>
+<ul>

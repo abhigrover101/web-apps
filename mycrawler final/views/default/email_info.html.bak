@@ -1,0 +1,23 @@
+<br />
+<div style="font-size:18px; color:#1569C7;" align="right"> 
+{{=A("Back to Search",_href=URL(r=request,f='enter_info'))}}
+</div>
+<br />
+<br />
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+
+body
+{
+background-image:url('/mycrawler/static/background.jpg');
+}
+</style>
+</head>
+
+<div style="font-size:50px; color:#1569C7;position:relative;text-align:center">Enter Email Information</div><br/>
+<div style="font-size:18px;" align="center"> {{=BEAUTIFY(name)}}</div>
+{{pass}}
+
+</html>

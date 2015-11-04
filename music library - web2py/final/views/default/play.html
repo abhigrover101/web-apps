@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+<div style="font-size:55px; color:#F88017;font-family:poke;position:absolute">Your Playlists</div><br/><br/><br/>
+<ul>
+{{for i in l:}}
+<div style="color:#ECD872;font-family:waltograph;position:absolute;font-size:20px">
+    <li>{{=A(i.playlist_name,_href=URL(r=request,f='playlist',args=i.id))}}</li></div>
+     <div style="color:#ECD872;font-family:waltograph;text-align:right">
+             {{=A("Add songs", _href=URL(r=request,f='select_songs',args=i.id))}}
+     {{=A("delete",_href=URL(r=request,f='del_play',args=i.id))}}</div>
+{{pass}}
+</ul>

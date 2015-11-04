@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+<div id="header1" style="font-size:55px;font-family:vtks deja vu;color: #F88017;text-align:center">My Uploads</div><br/>
+<div id="header1" style="font-size:22px;color:#ECD872; font-family:waltograph;text-align:left">Songs:</div>
+{{if u*15+1>=len(p):}}
+         {{i=-1}}  
+{{else:}}
+ {{for i in range(0,15):}}
+    <div id="header1" style="font-size:22px;color:#ECD872; font-family:waltograph;text-align:left"><li style="font-size:15px">
+    {{=A(p[u*15+i].song_name,_href=URL(r=request,f='view_song',args=p[15*u+i].id))}}</li></div>
+    <div id="header1" style="font-size:22px;color:#ECD872; font-family:waltograph;text-align:left">{{=A("Remove",_href=URL(r=request,f='del_my',args=p[i+u*15].id))}}</div><br/>
+    {{if u*15+i+1>=len(p):}}
+         {{i=-1}}
+         {{break}}
+    {{pass}}    
+ {{pass}}
+{{pass}}
+{{if i!=-1 :}}  
+    {{=A("more-->",_href=URL(r=request,f='my_uploads',args=u+1))}}
+{{pass}}

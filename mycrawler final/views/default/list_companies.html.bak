@@ -1,0 +1,21 @@
+<div style="font-size:18px; color:#1569C7;" align="right"> 
+{{=A("Back to Search",_href=URL(r=request,f='enter_info'))}}
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+
+body
+{
+background-image:url('/mycrawler/static/background.jpg');
+background-attachment: fixed; 
+}
+</style>
+</head>
+
+<div style="font-size:50px; color:#1569C7;position:relative;text-align:center">List Of Companies</div><br/>
+<div align="center" style="font-size:20px">
+<table cellspacing="20" cellpadding="10"> <tr> <th style="text-align:left"> Company Name </th> <th style="text-align:left"> First String </th> <th style="text-align:left"> Delimiter</th> <th style="text-align:left"> Second String</th> <th style="text-align:left"> Domain Name</th><th style="text-align:left">Options</th></tr> {{for i in companies:}} <tr><td style="text-align:left"> {{=i.Company_Name}} </td> <td style="text-align:left"> {{=i.First_String}} </td> <td style="text-align:left"> {{=i.Delimiter}}</td> <td style="text-align:left"> {{=i.Second_String}}</td> <td style="text-align:left"> {{=i.Domain_Name}}</td><td style="text-align:left">{{=A("Delete",_href=URL(r=request,f='delete',args=i.id))}}</td></tr>{{pass}}</table>
+</div>
+</html>

@@ -1,0 +1,5 @@
+{{extend 'layout.html'}}
+<h1>This is the default/lala.html template</h1>
+<h1>Demo Plugin Rating</h1>
+{{=crud.read(db.songs_database,1)}}
+{{=plugin_rating('songs_database',1)}}

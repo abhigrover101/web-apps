@@ -1,0 +1,39 @@
+{{extend 'layout.html'}}
+<div>
+{{i=0}}
+<div id="header1" style="font-size:50px;font-family:vtks deja vu;text-align:center;color:#F88017">ALL SONGS</div>
+<table cellspacing="10">
+{{for k in range(0,9):}}
+    {{if i%3==0:}}
+        <tr><td style="font-size:13px;font-family:artbrush;color:   #F9B7FF"><center><img src="{{=URL(r=request,f='download', args=songs[k+u*9].upload_song_cover)}}" width="150px" height="135px"/><br/>
+        <b>Song Name:</b> {{=A(songs[k+u*9].song_name,_href=URL(r=request,f='view_song',args=songs[k+u*9].id))}}<br/>
+        Artist: {{=songs[k+u*9].artist}}<br/>
+        Genre: {{=songs[k+u*9].Genre}}<br/>
+        {{=A("Download",_href=URL(r=request,f='download',args=songs[u*9+k].upload_song))}}<embed src="{{=URL(r=request,f='download',args=songs[u*9+k].upload_song)}}" width="200"  autostart="false" height="25" name="my"></embed></center>
+        </td>
+        {{i=i+1}}
+    {{else:}}
+        <td style="font-size:13px;font-family:artbrush;color:#F9B7FF"><center><img src="{{=URL(r=request,f='download', args=songs[u*9+k].upload_song_cover)}}" width="150px" height="135px"/><br/>
+        <b>Song Name:</b> {{=A(songs[k+u*9].song_name,_href=URL(r=request,f='view_song',args=songs[u*9+k].id))}}<br/>
+        Artist: {{=songs[u*9+k].artist}}<br/>
+        Genre: {{=songs[u*9+k].Genre}}<br/>
+        {{=A("Download",_href=URL(r=request,f='download',args=songs[u*9+k].upload_song))}}<embed src="{{=URL(r=request,f='download',args=songs[u*9+k].upload_song)}}" width="200" autostart="false" height="25" name="my"></embed></center>
+        </td>  
+        {{i=i+1}}
+        {{if i%3==0:}}
+            </tr>
+        {{pass}}
+    {{pass}}
+    {{if ((u*9+k+1)>=len(songs)):}}
+                 {{k=-1}}
+                 {{break}}
+    {{pass}}
+{{pass}}
+</table></div>
+<div  style="text-align:right;font-family:waltograph">
+{{if k!=-1 :}}
+    {{=A("more-->",_href=URL(r=request,f='list_songs',args=u+1))}}
+{{else:}}
+    {{=A("<--back",_href=URL(r=request,f='list_songs',args=u-1))}}
+{{pass}}
+</div>

@@ -1,0 +1,8 @@
+{{extend 'layout.html'}}
+<div id="header1" style="font-size:40px;font-family:polo;color: #F88017;text-align:center">Contents Of Playlist</div>
+{{for i in play:}}
+    <div id="header1" style="font-size:25px;color:#ECD872; font-family:waltograph">
+     {{=i.song_name}}</div>
+     <embed src="{{URL(r=request,f='download',args=i.song_id)}}" autostart="false" controller="true" width="200" height="250"></embed></td></tr>
+     <div id="header1" style="font-size:22px;color:#ECD872; font-family:waltograph;text-align:left">{{=A("Delete from playlist",_href=URL(r=request,f='del_play_song',args=[i.playlist_id,i.song_name]))}}</div><br/><br/>
+{{pass}}

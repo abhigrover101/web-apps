@@ -1,0 +1,5 @@
+{{extend 'layout.html'}}
+{{for song in songs:}}
+  <p><li>{{=A(song.song_name,_href=URL(r=request,f='view_song',args=song.id))}}</li>                 
+              {{=A('>>add to playlist',_href=URL(r=request,f='add',args=[i,song.song_name,song.id]))}}</p>   
+{{pass}}

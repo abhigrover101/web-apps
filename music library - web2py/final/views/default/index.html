@@ -1,0 +1,50 @@
+{{extend 'layout.html'}}
+<div id="header1" style="font-family:bleeding cowboys;font-size:50px;text-align:center">Welcome</div><br/><br/><br/>
+ <div id="header2" style="font-family:aladdin;font-size:22px;font-weight:bold;color:#F88017">Welcome to the world of Dance. Where Headstand gives u ovation from people with a stand . life when mixed with dance gives u a new meaning .
+</div><div id="header2" style="font-family:waltograph;font-size:20px;text-align:center">"Without music Dance would be a mistake"</div><br/><br/>
+<!--{{pass}}
+
+{{if auth.user:}}
+  <div id="header1" style="font-family:bleeding cowboys;font-size:50px;text-align:center">Welcome {{=auth.user.first_name}}</div>
+  <br/><br/>
+  <div id="header1" style="font-family:angie pierced;font-size:30px;text-align:center;color:#ECD872">My Profile</div>
+  <table id="header1"><ul>
+  <tr><td width="50%" id="header1" style="text-align:right;font-family:waltograph;font-size:25px;text-align:left">
+  <li>{{=A('Notifications',_href=URL(r=request,f='notify'))}}</li></td>
+  <td width="50%" id="header1" style="text-align:right;font-family:waltograph;font-size:25px"><li>{{=A('My Uploads',_href=URL(r=request,f='my_uploads'))}}</li></td></tr>
+  <tr><td width="50%" id="header1" style="text-align:right;font-family:waltograph;font-size:25px;text-align:left"><li>{{=A('Create New Playlist', _href=URL(r=request,f='create_playlist'))}}</li></td>
+<td width="50%" id="header1" style="text-align:right;font-family:waltograph;font-size:25px;text-align:right"><li>{{=A('My Playlists',_href=URL(r=request,f='play'))}}</li></td></tr>
+{{pass}}
+</table>
+<br/><br/>
+     
+ <div style="font-size:20px;font-family:waltograph ;color:#F88017;left:240px;position:relative">Recently Uploaded Songs</div >
+ <div align="center" class="content2" id="myslides">
+ <div id="mygallery" class="stepcarousel">
+ <div class="belt" style="width: 1750px; left: 0px;">
+ <div class="panel" style="float: none; position: absolute; left: 0px;">
+ <a title={{=p[-1].song_name}} href="{{=URL(r=request,f='view_song',args=p[-1].id)}}"><img height="148" width="100" <img src="{{=URL(r=request,f='download', args=p[-1].upload_song_cover)}}" width="100" height="148"/>
+  alt="#">
+ </a>
+ </div>
+ <div class="panel" style="float: none; position: absolute; left: 126px;">
+ <a title={{=p[-2].song_name}} href="{{=URL(r=request,f='view_song',args=p[-2].id)}}"><img  src="{{=URL(r=request,f='download', args=p[-2].upload_song_cover)}}" height="148" width="100" alt="#">
+ </a>
+ </div>
+ <div class="panel" style="float: none; position: absolute; left: 252px;">
+ <a title={{=p[-3].song_name}} href="{{=URL(r=request,f='view_song',args=p[-3].id)}}"><img height="148" width="100" src="{{=URL(r=request,f='download', args=p[-3].upload_song_cover)}}" alt="#">
+ </a>
+ </div>
+ <div class="panel" style="float: none; position: absolute; left: 378px;">
+ <a title={{=p[-4].song_name}} href="{{=URL(r=request,f='view_song',args=p[-4].id)}}"><img height="148" width="100" src="{{=URL(r=request,f='download', args=p[-4].upload_song_cover)}}" alt="#">
+ </a>
+ </div>
+ <div class="panel" style="float: none; position: absolute; left: 504px;">
+ <a title={{=p[-5].song_name}} href="{{=URL(r=request,f='view_song',args=p[-5].id)}}"><img height="148" width="100" src="{{=URL(r=request,f='download', args=p[-5].upload_song_cover)}}" alt="#"> 
+ </a>
+ </div>
+
+ </div>
+ </div>
+ </div><br/>
+-->

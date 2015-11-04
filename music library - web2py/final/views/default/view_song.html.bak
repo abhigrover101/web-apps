@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+<ul>
+{{for song in songs:}}
+ <img src="{{=URL(r=request,f='download', args=song.upload_song_cover)}}" width="200px" />  <div style="color:pink;font-family:waltograph;font-size:25px">$ {{=song.song_name}} $</div><br/>  <embed src="{{=URL(r=request,f='download',args=song.upload_song)}}" width="200px"  autostart="false" height="25" name="my"></embed><div style="color:pink;font-family:waltograph;font-size:25px"> 
+{{=A("like",_href=URL(r=request,f='likes',args=song.id))}}</div><br/>
+ <div style="color:#ECD872;font-family:polo;font-size:18px">
+ <li>Artist :   {{=song.artist}}    </li>                      
+ <li>Album :     {{=song.album_name}} </li>
+ <li>Language :      {{=song.language}} </li>                    
+ <li>Genre :      {{=song.Genre}}  </li>
+ <li>Downloaded   "{{=song.no_down}}" times</li>  
+ 
+
+{{pass}}
+{{for ii in u:}}
+ <li>{{=A("Download",_href=URL(r=request,f='down',args=[ii.upload_song,ii.id]))}}</li>
+{{pass}}
+</ul>
+<br/><br/>
+<div style="color:#F88017;font-family:extraornamentalno2;font-size:22px">
+Comments</div><div style="color:#ECD872;font-family:polo;font-size:17px"> Total {{=so}} comments... Displaying first few...
+<br/><br/>
+{{k=0}}
+{{for i in s:}}
+    {{k+=1}}
+    <li>{{=i.user_name}} says "{{=i.comment}}" on {{=i.time}}</li>
+    {{if k==3:}}
+            {{break}}
+    {{pass}}
+{{pass}}
+{{for song in songs:}}
+  <li>{{=A("view all",_href=URL(r=request,f='all',args=[song.id,0]))}}</li>
+{{pass}}
+</div>
+{{if auth.user:}}
+    {{=form}}
+{{pass}}

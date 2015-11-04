@@ -1,0 +1,26 @@
+# coding: utf8
+messages = {} #use key=subject, value=body
+def sendmail(sub,vars):
+    if auth.user.email and sub in messages:
+        mail.send(auth.user.email,subject='[IIITH] '+sub,message=messages[sub].format(**vars))
+
+messages['Acknowledgment and Registration Fee by DD'] = '''
+Dear Candidate,
+
+We have received your details for PGSSP admission through the online form available at:
+
+   http://web2py.iiit.ac.in/pgssp
+
+If you want to change the details you entered on the online form for PGSSP, you can revisit the above website. The last entered information before the deadline will be used for shortlisting candidates.
+
+Please check your email regularly. All correspondence will be through email only.
+
+Please send Registration Fee of Rs.800 (Eight Hundred rupees) through DD in favour of "IIIT Hyderabad", payable at "Hyderabad" to complete your application for PGSSP. Please send your DD to reach us on or before 15th July 2010 4 PM. Write your email address that you used for registration on the back of the DD. Also, please enter the DD details on the online form available at:
+
+   http://web2py.iiit.ac.in/pgssp/default/add_payment_details
+
+If you have received this message in error, kindly contact pgadmissions@iiit.ac.in
+
+Regards,
+PG Admissions Team
+IIIT Hyderabad.'''

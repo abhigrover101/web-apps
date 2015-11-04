@@ -1,0 +1,4 @@
+{{extend 'layout.html'}}
+{{for i in range(0,5):}}
+    {{=A(p[-i].song_name,_href=URL(r=request,f='view_song',args=p[-i].id))}}
+{{pass}}

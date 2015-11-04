@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+<div style="font-size:50px; color:#F88017;font-family:vtks deja vu;position:absolute">Search a song</div><br/><br/><br/>
+<div style="font-size:25px;color:#ECD872; font-family:waltograph;position:absolute">{{=form}}</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<ul>
+{{if len(d)>0:}}
+<table cellspacing="15">
+<!--><tr><td>song   artist   genre   language   year   album_name</li><-->
+<tr><td style="font-size:13px;color:#ECD872; font-family:ace crikey;white-space: nowrap;text-align:center"><b><center>Cover</b></td>
+<td style="font-size:13px;color:#ECD872; font-family:ace crikey;white-space: nowrap;text-align:center"><b><center>Song Name</center></b></td><td style="font-size:13px;color:#ECD872; font-family:ace crikey;white-space: nowrap;text-align:center"><b><center>Artist</center></b></td><td style="font-size:13px;color:#ECD872; font-family:ace crikey;white-space: nowrap;text-align:center"><b><center>Genre</center></b></td><td style="font-size:13px;color:#ECD872; font-family:ace crikey;white-space: nowrap;text-align:center"><b><center>Language</center></b></td><td style="font-size:13px;color:#ECD872; font-family:ace crikey;white-space: nowrap;text-align:center"><b><center>Year</center></b></td><td style="font-size:13px;color:#ECD872; font-family:ace crikey;white-space: nowrap;text-align:center"><b><center>Album Name</center></b></td></tr>
+ {{for i in d:}}
+  {{for j in h:}}
+    {{if i==j.id:}}
+      <font size=1><tr>
+      <td align="center"> <img src="{{=URL(r=request,f='download',args=j.upload_song_cover)}}" height=30 width=30 /> </td>
+      <td style="font-size:15px;color:#ECD872; font-family:artbrush;white-space: nowrap;text-align:center"><center> {{=A(j.song_name,_href=URL(r=request,f='view_song',args=i))}}</center></td>   <td style="font-size:15px;color:#ECD872; font-family:artbrush;white-space: nowrap;text-align:center"><center> {{=j.artist}}</center></td>  <td style="font-size:15px;color:#ECD872; font-family:artbrush;white-space: nowrap;text-align:center"><center> {{=j.Genre}}</center> </td> <td style="font-size:15px;color:#ECD872; font-family:artbrush;white-space: nowrap;text-align:center"><center> {{=j.language}}</center></td>  <td style="font-size:15px;color:#ECD872; font-family:artbrush;white-space: nowrap;text-align:center"><center> {{=j.year}}</center> </td> <td style="font-size:15px;color:#ECD872; font-family:artbrush;white-space: nowrap;text-align:center"><center> {{=j.album_name}}</center></font> </td></tr>
+    {{pass}} 
+  {{pass}}
+ {{pass}}
+{{pass}} 
+</ul>

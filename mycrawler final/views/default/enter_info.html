@@ -1,0 +1,75 @@
+<!--<h1>LinkedIn Crawler</h1>
+<div style="font-size:50px;color:#F88017; font-family:vtks deja vu;position:absolute"> Enter Info</div><br/><br/><br/>
+
+{{=form}}-->
+  <script src="{{=URL('static','js/modernizr.custom.js')}}"></script>  
+
+  <!-- include stylesheets -->
+  {{
+  #response.files.append(URL('static','css/skeleton.css'))
+  response.files.append(URL('static','css/web2py.css'))
+  #if response.menu:
+  #   response.files.append(URL('static','css/superfish.css'))
+  #   response.files.append(URL('static','js/superfish.js'))
+  #pass
+  }}
+
+  {{include 'web2py_ajax.html'}}
+
+
+<div class="flash">{{=response.flash or ''}}</div>
+<br />
+<div style="position:absolute">
+<div style="font-size:18px; color:#1569C7;" align="left"> 
+{{=A("Log Out",_href=URL(r=request,f='logout'))}}
+</div>
+<div style="font-size:18px; color:#1569C7;" align="left"> 
+{{=A("Add Company Information",_href=URL(r=request,f='email_info'))}}
+</div>
+<div style="font-size:18px; color:#1569C7;" align="left"> 
+{{=A("List Companies",_href=URL(r=request,f='list_companies'))}}
+</div>
+<div style="font-size:18px; color:#1569C7;" align="left"> 
+{{=A("Get All Contacts",_href=URL(r=request,f='extract'))}}
+</div>
+<div style="font-size:18px; color:#1569C7;" align="left"> 
+{{=A("Get All Accounts",_href=URL(r=request,f='accountsonpc'))}}
+</div>
+<div style="font-size:18px; color:#1569C7;" align="left"> 
+{{=A("Generate EmailIds",_href=URL(r=request,f='create_email'))}}
+</div>
+<div style="font-size:18px; color:#1569C7;" align="left"> 
+{{=A("Check Data",_href=URL(r=request,f='upload'))}}
+</div>
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+
+body
+{
+background-image:url('/mycrawler/static/background.jpg');
+}
+</style>
+</head>
+
+<div style="font-size:50px; color:#1569C7;text-align:center;">Enter Information</div><br/>
+<div style="font-size:18px;" align="center"> {{=(form)}}</div>
+{{pass}}
+
+
+
+<!--<body>
+<br /><br /><br /><br /><br /><br />
+<div style="font-size:50px; color:#1569C7;position:relative;text-align:center">Enter Information</div><br/>
+<div style="text-align:center">
+{{=form.custom.begin}}
+<b><div>First Name: {{=form.custom.widget.First_Name}}</div>
+<b><div>Last Name: {{=form.custom.widget.Last_Name}}</div>
+<div>Keywords: {{=form.custom.widget.Last_Name}}</div>
+{{=form.custom.submit}}
+{{=form.custom.end}}
+</div>
+</body>-->
+</html>
